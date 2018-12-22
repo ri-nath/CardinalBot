@@ -1,0 +1,34 @@
+{
+  "name": "CardinalBot",
+  "version": "1.0.0",
+  "description": "Old CardinalBot was very messy. Here's a better one!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rishinath4159/CardinalBot.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rishinath4159/CardinalBot/issues"
+  },
+  "homepage": "https://github.com/rishinath4159/CardinalBot#readme",
+  "dependencies": {
+    "discord.js": "^11.4.2",
+    "dotenv": "^6.2.0",
+    "enmap": "^4.5.0",
+    "googleapis": "^27.0.0"
+  },
+  "engines": {
+    "node": "10.14.1",
+    "npm": "*"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node cardinalbot.js"
+  }
+}

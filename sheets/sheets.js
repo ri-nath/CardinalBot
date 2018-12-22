@@ -11,9 +11,9 @@ function authorize(credentials) {
   return oAuth2Client;
 }
 
-const credentials = require("./credentials.json");
+const credentials = process.env.CREDENTIALS;
 console.log(credentials);
-const token = require("./token.json");
+const token = process.env.SHEETSTOKEN;
 
 const auth = authorize(credentials);
 
