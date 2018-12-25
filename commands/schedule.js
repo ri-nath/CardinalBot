@@ -27,6 +27,7 @@ const codes = {
   "E": ["**Early Release**", "\nThis schedule changes on a case-by-case basis. Check <#351871719406960643> for the most relevant version."],
   "H": ["**Holiday**", "\nNo school."],
   "NO CODE": ["**No Code**", "\nThis day is either a weekend or a day without a specified code."],
-  "HELP": ["Proper use of '>decode' is:", "\n`>decode [schedule code]` \ni.e. >decode M \n*For a list of codes, type `>decode codes`*."],
-  "CODES": ["**Schedule Codes**", "\n**M** Monday Meeting  \n**N** Neutral \n**S** Special \n**T** Testing \n**H** Holiday \n**R** Rally\n**E** Early Release"]
 }
+
+/*"HELP": ["Proper use of '!schedule' is:", "\n`>schedule [schedule code]` \ni.e. >schedule M \n*For a list of codes, type `>schedule codes`*."],
+"CODES": ["**Schedule Codes**", "\n**M** Monday Meeting  \n**N** Neutral \n**S** Special \n**T** Testing \n**H** Holiday \n**R** Rally\n**E** Early Release"]*/
