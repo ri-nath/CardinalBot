@@ -1,3 +1,8 @@
+const Discord = require("discord.js");
+
 exports.run = (client, message, args) => {
-    message.channel.send("Pong!").catch(console.error);
+    embed = new Discord.RichEmbed()
+    .setAuthor("Pong!", client.user.avatarURL)
+    .setColor(8989999);
+    message.channel.send(embed).catch(console.error);
 }
