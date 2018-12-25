@@ -1,4 +1,4 @@
-const scrape = require('./../scrape/teacherFinder.js')
+const scrape = require('./../modules/teacherFinder.js')
 const Discord = require("discord.js");
 
 

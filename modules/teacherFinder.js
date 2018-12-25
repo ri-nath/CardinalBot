@@ -20,7 +20,6 @@ function updateList(page) {
           }
           teachersPrimitive[i + (page - 1) * 100] = [String(teachers[i]['children'][0]['data']), String(ratings[i]['attribs']['title']), comment_string, String(`https://www.ratemyteachers.com${teachers[i]['attribs']['href']}`)];
       }
-      console.log("scoop")
     })
     .catch(function(err){
       console.log(err);
@@ -33,7 +32,6 @@ function searchList(name) {
       return teachersPrimitive[i]
     }
   }
-
   return -1;
 }
 

@@ -1,4 +1,4 @@
-const sheets = require("./../sheets/sheets.js")
+const sheets = require("./../modules/sheets.js")
 
 exports.run = (client, message, args) => {
     sheets.getCode(args[0], code => message.channel.send(codes[code]));

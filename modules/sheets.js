@@ -4,7 +4,6 @@ const {google} = require("googleapis");
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 function authorize(credentials) {
-  console.log(credentials.installed);
   const {client_secret, client_id, redirect_uris} = credentials.installed;
   const oAuth2Client = new google.auth.OAuth2(
       client_id, client_secret, redirect_uris[0]);
@@ -13,7 +12,6 @@ function authorize(credentials) {
 }
 
 const credentials = JSON.parse(process.env.CREDENTIALS);
-console.log(credentials);
 const token = JSON.parse(process.env.SHEETSTOKEN);
 
 const auth = authorize(credentials);
