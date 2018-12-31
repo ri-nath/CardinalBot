@@ -18,7 +18,7 @@ exports.run = (client, message, args) => {
       }
       else
       if ("schedule".includes(args[0])){
-        embed.addField(process.env.PREFIX + "schedule", "Returns the schedule for the given date. If no date is given, returns today's schedule.");
+        embed.addField(process.env.PREFIX + "schedule [date]", "Returns the schedule for the given date. If no date is given, returns today's schedule.");
         message.channel.send(embed).catch(console.error);
         return;
       } else
@@ -26,13 +26,20 @@ exports.run = (client, message, args) => {
         embed.addField(process.env.PREFIX + "about", "Tells you about this bot!");
         message.channel.send(embed).catch(console.error);
         return;
+      } else
+      if ("decode".includes(args[0])){
+        embed.addField(process.env.PREFIX + "decode <schedule code>", "Returns the schedule for the given code. Use `!decode codes` for a list of schedules.");
+        message.channel.send(embed).catch(console.error);
+        return;
       }
     }
     embed.setDescription("This bot is primarily designed for students of Lowell High School.")
     .addField(process.env.PREFIX + "about", "Tells you about this bot!")
-    .addField(process.env.PREFIX + "schedule <date>", "Returns the schedule for the given date. If no date is given, returns today's schedule.")
+    .addField(process.env.PREFIX + "schedule [date]", "Returns the schedule for the given date. If no date is given, returns today's schedule.")
+    .addField(process.env.PREFIX + "decode <schedule code>", "Returns the schedule for the given code. Use `!decode codes` for a list of schedules.")
     .addField(process.env.PREFIX + "rating <teacher name>", "Returns a teacher's ratings and reviews from ratemyteachers.com.")
     .addField(process.env.PREFIX + "finalgrade <current> <goal> <final weight>", "Given your current grade, your desired grade, and your final's weight, calculates the minimum score needed on your final.")
+    .setTimestamp()
     .setColor(8989999);
     message.channel.send(embed).catch(console.error);
 }

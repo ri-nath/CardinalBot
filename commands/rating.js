@@ -13,6 +13,7 @@ exports.run = (client, message, args) => {
     .addField("Review", review, true)
     .setTitle("View this teacher's reviews")
     .setURL(link)
+    .setTimestamp()
     .setColor(8989999);
     message.channel.send(embed).catch(console.error);
 

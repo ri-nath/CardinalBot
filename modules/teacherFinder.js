@@ -4,7 +4,7 @@ const url = 'https://www.ratemyteachers.com/lowell-high-school/3519-s/';
 var teachers = {};
 var ratings = {};
 var comments = {};
-var teachersPrimitive = [[]];
+var data = [[]];
 
 function updateList(page) {
   rp(url + page)
@@ -18,7 +18,7 @@ function updateList(page) {
           } else {
             comment_string = "This teacher doesn't have a review.";
           }
-          teachersPrimitive[i + (page - 1) * 100] = [String(teachers[i]['children'][0]['data']), String(ratings[i]['attribs']['title']), comment_string, String(`https://www.ratemyteachers.com${teachers[i]['attribs']['href']}`)];
+          data[i + (page - 1) * 100] = [String(teachers[i]['children'][0]['data']), String(ratings[i]['attribs']['title']), comment_string, String(`https://www.ratemyteachers.com${teachers[i]['attribs']['href']}`)];
       }
     })
     .catch(function(err){
@@ -27,14 +27,15 @@ function updateList(page) {
 }
 
 function searchList(name) {
-  for (var i = 0; i < teachersPrimitive.length; i++) {
-    if ((teachersPrimitive[i][0].toLowerCase()).includes(name.toLowerCase())) {
-      return teachersPrimitive[i]
-    }
+  let filtered = data.filter(teacher => teacher[0].toLowerCase().split(' ').includes(name.toLowerCase()));
+  for (i in data[0]){
+      console.log(i.toLowerCase().split(' '))
   }
-  return -1;
+
+  console.log(filtered)
+
 }
 
 for (var i = 0; i < 4; i ++) updateList(i + 1);
 
-module.exports = {updateList: updateList, searchList: searchList, teachersPrimitive: teachersPrimitive};
+module.exports = {updateList: updateList, searchList: searchList, data: data};
