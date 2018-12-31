@@ -27,13 +27,11 @@ function updateList(page) {
 }
 
 function searchList(name) {
-  let filtered = data.filter(teacher => teacher[0].toLowerCase().split(' ').includes(name.toLowerCase()));
-  for (i in data[0]){
-      console.log(i.toLowerCase().split(' '))
+  for (var i = 0; i < data.length; i++) {
+      if ((data[i][0].toLowerCase()).includes(name.toLowerCase())) {
+        return data[i]
+      }
   }
-
-  console.log(filtered)
-
 }
 
 for (var i = 0; i < 4; i ++) updateList(i + 1);
