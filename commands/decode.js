@@ -4,13 +4,17 @@ const Discord = require("discord.js");
 
 exports.run = (client, message, args) => {
     const embed = new Discord.RichEmbed();
+    let code = args[0]
 
-    if (args.length < 1 || !(args[0] in codes)){args[0] = "HELP";}
+    if (args.length > 0) {
+      code = code.toUpperCase();
+      if (!(code in codes)){code = "HELP";}
+    } else {code = "HELP";}
 
-    args[0] = args[0].toUpperCase();
-    if (args[0] == "CODES" || args[0] == "HELP"){embed.setAuthor("Decode Command Info");}
-    else {embed.setAuthor(codes[args[0]][0].slice(2, codes[args[0]][0].length - 2), client.user.avatarURL);}
-    embed.setDescription(codes[args[0]][1])
+    if (code == "CODES" || code == "HELP"){embed.setAuthor("Decode Command Info");}
+    else {embed.setAuthor(codes[code][0].slice(2, codes[code][0].length - 2), client.user.avatarURL);}
+
+    embed.setDescription(codes[code][1])
     .setColor(8989999)
     .setTimestamp();
 
