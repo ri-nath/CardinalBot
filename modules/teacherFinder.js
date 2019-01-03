@@ -32,6 +32,8 @@ function searchList(name) {
         return data[i]
       }
   }
+
+  return -1;
 }
 
 for (var i = 0; i < 4; i ++) updateList(i + 1);
