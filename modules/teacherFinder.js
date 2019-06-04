@@ -22,7 +22,7 @@ function updateList(page) {
       }
     })
     .catch(function(err){
-      console.log(err);
+      //console.log(err);
     });
 }
 
