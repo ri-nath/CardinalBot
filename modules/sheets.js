@@ -24,11 +24,7 @@ function getCode(day, callback) {
 
   if (currentDate.getDay() === 0 || currentDate.getDay() === 6) {
     //Not sure why this works. When just using 'callback("NO CODE");', it complains that 'callback is not a function'. However, in a try/catch statement, it doesn't.
-    try {
-      callback("NO CODE");
-    } catch (e) {
-      return("NO CODE");
-    }
+    return callback("NO CODE");
   }
 
   const sheets = google.sheets({version: "v4", auth});
@@ -40,7 +36,7 @@ function getCode(day, callback) {
     for (row of res.data.values) {
       if (row[6] === month) {
         for (row of res.data.values.slice(res.data.values.indexOf(row) + 1, res.data.values.indexOf(row) + 7)) {
-          if (row.includes(String(day))) {
+          if (row.includes(String(day)) && row[6] !== 'N/A') {
             callback(row[6][row.indexOf(String(day))] === undefined ? "NO CODE" : row[6][row.indexOf(String(day))]);
             break;
           }

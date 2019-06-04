@@ -1,6 +1,7 @@
 const Discord = require("discord.js");
 
 exports.run = (client, message, args) => {
+    console.log(message);
     embed = new Discord.RichEmbed()
     .setAuthor("CardinalBot 2", client.user.avatarURL)
     .setColor(8989999)
