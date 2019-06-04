@@ -31,7 +31,7 @@ Returns list of available commands. Can also be accessed by [mentioning](https:/
 
 `!finalgrade <current> <goal> <final weight>`: Given your current grade, your desired grade, and your final's weight, calculates the minimum score needed on your final.
 
-`!rating <teacher name>`: Returns a teacher's ratings and reviews from ratemyteachers.com.
+`!rating <teacher name>`: Returns a teacher's ratings and reviews from [studentsreview.me](https://studentsreview.me).
 
 `!decode <schedule code>`: Returns the schedule for the given code. Use `!decode codes` for a list of schedules.
 
