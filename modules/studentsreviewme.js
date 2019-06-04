@@ -3,34 +3,43 @@ const slugify = require('slugify');
 
 const getTeacher = async search => {
     const teacherQuery = `
-        query {
-            findManyTeacher {
+        query($search: String!) {
+            findOneTeacher(
+                filter: {
+                    search: $search
+                }
+            ) {
                 name
+                rating
             }
         }
     `;
 
-    const teacherData = await request('https://api.studentsreview.me', teacherQuery);
-    const match = teacherData.findManyTeacher.find(teacher => teacher.name.toLowerCase().includes(search.toLowerCase())).name;
+    const teacherVariables = { search };
+
+    const teacherData = await request('https://api.studentsreview.me', teacherQuery, teacherVariables);
+
     const reviewQuery = `
         query($name: String!) {
-            findManyReview(filter: {
-                teacher: $name
-            }) {
-                rating
+            findManyReview(
+                filter: {
+                    teacher: $name
+                }
+                sort: TIMESTAMP_DESC
+                limit: 1
+            ) {
                 text
-                timestamp
             }
         }
     `;
-    const variables = {
-        name: match
-    };
 
-    const reviewData = await request('https://api.studentsreview.me', reviewQuery, variables);
-    const rating = (reviewData.findManyReview.reduce((acc, cur) => acc + cur.rating, 0) / reviewData.findManyReview.length).toFixed(1);
-    const text = reviewData.findManyReview.sort((a, b) => +new Date(b.timestamp) - +new Date(a.timestamp))[0].text;
-    const name = match;
+    const reviewVariables = { name: teacherData.findOneTeacher.name };
+
+    const reviewData = await request('https://api.studentsreview.me', reviewQuery, reviewVariables);
+
+    const rating = teacherData.findOneTeacher.rating.toFixed(1);
+    const text = reviewData.findManyReview[0].text;
+    const name = teacherData.findOneTeacher.name;
     const link = `https://studentsreview.me/teachers/${ slugify(name, { lower: true }) }`;
     return {
         name,
