@@ -28,10 +28,10 @@ const getTeacher = async search => {
     };
 
     const reviewData = await request('https://api.studentsreview.me', reviewQuery, variables);
-    const rating = reviewData.findManyReview.reduce((acc, cur) => acc + cur.rating, 0) / reviewData.findManyReview.length;
+    const rating = (reviewData.findManyReview.reduce((acc, cur) => acc + cur.rating, 0) / reviewData.findManyReview.length).toFixed(1);
     const text = reviewData.findManyReview.sort((a, b) => +new Date(b.timestamp) - +new Date(a.timestamp))[0].text;
     const name = match;
-    const link = `https://studentsreview.me/teachers/${ slugify(name) }`;
+    const link = `https://studentsreview.me/teachers/${ slugify(name, { lower: true }) }`;
     return {
         name,
         link,
