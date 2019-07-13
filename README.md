@@ -5,14 +5,14 @@ Created in Node.js.
 
 >Packages:
 ```json
-"discord.js": "^11.4.2",
-"dotenv": "^6.2.0",
-"enmap": "^4.5.0",
-"googleapis": "^27.0.0",
-"cheerio": "^1.0.0-rc.2",
-"puppeteer": "^1.11.0",
-"request": "^2.88.0",
-"request-promise": "^4.2.2"
+{
+    "discord.js": "^11.4.2",
+    "dotenv": "^6.2.0",
+    "enmap": "^4.5.0",
+    "googleapis": "^27.0.0",
+    "graphql-request": "^1.8.2",
+    "slugify": "^1.3.4"
+}
 ```
 
 ## Usage
