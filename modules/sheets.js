@@ -1,4 +1,3 @@
-const fs = require("fs");
 const {google} = require("googleapis");
 
 const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -18,12 +17,14 @@ const auth = authorize(credentials);
 
 function getCode(day, callback) {
   var currentDate = day === undefined ? new Date() : new Date(day);
+  if (day) {
+    currentDate.setFullYear((new Date).getFullYear())
+  }
   if (currentDate.toDateString() === "Invalid Date") return;
   var month = months[currentDate.getMonth()].toUpperCase();
   var day = currentDate.getDate();
 
   if (currentDate.getDay() === 0 || currentDate.getDay() === 6) {
-    //Not sure why this works. When just using 'callback("NO CODE");', it complains that 'callback is not a function'. However, in a try/catch statement, it doesn't.
     return callback("NO CODE");
   }
 
@@ -37,8 +38,7 @@ function getCode(day, callback) {
       if (row[6] === month) {
         for (row of res.data.values.slice(res.data.values.indexOf(row) + 1, res.data.values.indexOf(row) + 7)) {
           if (row.includes(String(day)) && row[6] !== 'N/A') {
-            callback(row[6][row.indexOf(String(day))] === undefined ? "NO CODE" : row[6][row.indexOf(String(day))]);
-            break;
+            return callback(row[6][row.indexOf(String(day))] === undefined ? "NO CODE" : row[6][row.indexOf(String(day))]);
           }
         }
       }
