@@ -29,7 +29,7 @@ function getCode(day, callback) {
 
   const sheets = google.sheets({version: "v4", auth});
   sheets.spreadsheets.values.get({
-    spreadsheetId: "1rIpxKuWzxgg-TOT0xrsjL6L4X4cSw9Wo1PoKIs1afkM",
+    spreadsheetId: "12RrcoC6UJ0nMM0iRWe9AeCkpA90bRMg47XelLxAdzYg",
     range: "All School Activities Calendar!A3:G68",
   }, (err, res) => {
     if (err) return console.log("The API returned an error: " + err);
