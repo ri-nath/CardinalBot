@@ -22,7 +22,7 @@
     "discord.js": "^11.4.2",
     "dotenv": "^6.2.0",
     "enmap": "^4.5.0",
-    "googleapis": "^27.0.0",
+    "googleapis": "^39.1.0",
     "graphql-request": "^1.8.2",
     "slugify": "^1.3.4"
   },
